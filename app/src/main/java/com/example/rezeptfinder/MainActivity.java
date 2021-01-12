@@ -1,6 +1,7 @@
 package com.example.rezeptfinder;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -40,18 +41,19 @@ public class MainActivity extends AppCompatActivity {
         mainListView = (ListView) findViewById(R.id.lv);
         mainTextView = (TextView) findViewById(R.id.tv);
 
-        // Initializing a new list
+
+        // Initializing a new list of ingredients
         List<String> ingredients = Arrays.asList(
-                "Alder",
-                "Basswood",
-                "Birch",
-                "Buckeye",
-                "Cedar",
-                "Cherry",
-                "Chestnut",
-                "Hawthorn",
-                "Cypress",
-                "Honeylocust"
+                "Ananas",
+                "Äpfel",
+                "Birnen",
+                "Bananen",
+                "Karotten",
+                "Peperoni",
+                "Chilli",
+                "Fenkel",
+                "Oliven",
+                "Zwiebeln"
         );
 
         // Erstellt einen neuen ArrayAdapter.
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Setzt den Adapter auf die Hauptlistenview.
         mainListView.setAdapter(adapter);
+
 
         // Ein Listener für die einzelnen Zutaten.
         mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

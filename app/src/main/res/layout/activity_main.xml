@@ -67,7 +67,9 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:fontFamily="casual"
+                android:text="Kartoffeln"
+                android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
 

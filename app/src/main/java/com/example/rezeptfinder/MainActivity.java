@@ -1,12 +1,21 @@
+/**
+ * Diese App wurde von Jason Banyer programmiert.
+ * Letzer Eintrag am 12.01.2021
+ *
+ * Diese Klasse ist die Hauptklasse und verwaltet die erste Appseite.
+ * */
 package com.example.rezeptfinder;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,7 +33,16 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout mRelativeLayout;
     private ListView mainListView;
     private TextView mainTextView;
+    private CheckBox vegiCheckbox;
+    private CheckBox vegaCheckbox;
+    private CheckBox diabCheckbox;
+    private CheckBox laktCheckbox;
+    private Button searchButton;
 
+    private boolean vegiBoolean = false;
+    private boolean vegaBoolean = false;
+    private boolean diabBoolean = false;
+    private boolean laktBoolean = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
         // Referenziert die XML Dateien
         mainListView = (ListView) findViewById(R.id.lv);
         mainTextView = (TextView) findViewById(R.id.tv);
+
+        //Die CheckBoxen werden definiert nach Vegetarier Checkbox, Veganer Checkbox, Diabetes Checkbox und Laktose Checkbox.
+        vegiCheckbox = (CheckBox) findViewById(R.id.checkBox);
+        vegaCheckbox = (CheckBox) findViewById(R.id.checkBox2);
+        diabCheckbox = (CheckBox) findViewById(R.id.checkBox3);
+        laktCheckbox = (CheckBox) findViewById(R.id.checkBox4);
+        searchButton = (Button) findViewById(R.id.button);
 
 
         // Initializing a new list of ingredients
@@ -77,10 +102,12 @@ public class MainActivity extends AppCompatActivity {
                 mainTextView.setText("Ausgewählte Zutaten: ");
 
                 for(int index=0;index<clickedItemPositions.size();index++){
+
                     // Holt die aktuelle Position der ausgewählten Zutat.
                     boolean checked = clickedItemPositions.valueAt(index);
 
                     if(checked){
+
                         // Definiert die aktuelle Position der ausgewählten Zutat.
                         int key = clickedItemPositions.keyAt(index);
                         String item = (String) mainListView.getItemAtPosition(key);
@@ -91,5 +118,85 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        //Listener ViewList zu Ende
+
+
+        //Checkbox Vegetarischer Listener
+        vegiCheckbox.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if (vegiBoolean == false) {
+                    vegiBoolean = true;
+                } else {
+                    vegiBoolean = false;
+                }
+            }
+        }
+        );
+
+        //Checkbox Veganer Listener
+        vegaCheckbox.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if (vegaBoolean == false) {
+                        vegaBoolean = true;
+                    } else {
+                        vegaBoolean = false;
+                    }
+                }
+            }
+        );
+
+        //Checkbox Diabetes Listener
+        diabCheckbox.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if (diabBoolean == false) {
+                        diabBoolean = true;
+                    } else {
+                        diabBoolean = false;
+                    }
+                }
+            }
+        );
+
+        //Checkbox Laktose Listener
+        laktCheckbox.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if (laktBoolean == false) {
+                        laktBoolean = true;
+                    } else {
+                        laktBoolean = false;
+                    }
+                }
+            }
+        );
+
+
+
+
+        //Ein Listener wird auf den searchButton gepackt.
+        searchButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                if (vegiBoolean){
+                    System.out.println("Es ist vegetarisch!");
+                }
+                if (vegaBoolean){
+                    System.out.println("Es ist vegan!");
+                }
+                if (diabBoolean){
+                    System.out.println("Es ist diabetes freundlich!");
+                }
+                if (laktBoolean){
+                    System.out.println("Es ist laktose freundlich!");
+                }
+            }
+
+            });
+
     }
 }

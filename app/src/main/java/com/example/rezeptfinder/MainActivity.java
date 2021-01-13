@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // Get the application context
         mainContext = getApplicationContext();
@@ -181,20 +184,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                RecepieGetter RG = new RecepieGetter();
 
-                if (vegiBoolean){
-                    System.out.println("Es ist vegetarisch!");
-                }
-                if (vegaBoolean){
-                    System.out.println("Es ist vegan!");
-                }
-                if (diabBoolean){
-                    System.out.println("Es ist diabetes freundlich!");
-                }
-                if (laktBoolean){
-                    System.out.println("Es ist laktose freundlich!");
-                }
+                    RG.getIt(vegiBoolean, vegaBoolean, diabBoolean, laktBoolean);
+
             }
+
 
             });
 

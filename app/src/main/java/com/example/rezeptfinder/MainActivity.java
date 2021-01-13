@@ -8,6 +8,7 @@ package com.example.rezeptfinder;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
@@ -184,9 +185,23 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                RecepieGetter RG = new RecepieGetter();
 
-                    RG.getIt(vegiBoolean, vegaBoolean, diabBoolean, laktBoolean);
+
+                Intent resultActivityIntent = new Intent(getApplicationContext(), ResultActivity.class);
+
+                //Schickt als Bundle das Resultat als String und double, um in der nächsten Activity verwendet werden zu können.
+                Bundle b = new Bundle();
+                String test = "test";
+                b.putString("result_string", test);
+                b.putBoolean("vegi_bool", vegiBoolean);
+                b.putBoolean("vega_bool", vegaBoolean);
+                b.putBoolean("diab_bool", diabBoolean);
+                b.putBoolean("lakto", laktBoolean);
+
+
+                resultActivityIntent.putExtras(b);
+                startActivity(resultActivityIntent);
+                finish();
 
             }
 

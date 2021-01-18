@@ -1,3 +1,10 @@
+/**
+ * Diese App wurde von Jason Banyer programmiert.
+ * Letzer Eintrag am 18.01.2021
+ *
+ * Diese Klasse ist dafür zuständig die Rezepte zu holen und an den ResultActivity zu übergeben.
+ * Aufgerufen wird diese Klasse als asynchrones Thread von ResultActivity.
+ * */
 package com.example.rezeptfinder;
 
 import android.app.Activity;
@@ -37,6 +44,11 @@ public class RecepieGetter{
 
                 //HTML Seite wird heruntergeladen
 
+
+                // Dieser Teil verursacht Probleme, weil das Android nicht
+                // mit dem Internet verbindet <-----
+
+
                 //Der ?q= vegetarian Teil kann mit allem ersetzt werden.
                 URL url = new URL("https://myfridgefood.com/Search?q=vegetarian");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -45,6 +57,9 @@ public class RecepieGetter{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 BufferedWriter writer = new BufferedWriter(new FileWriter("data.html"));
                 String line;
+
+                //----------->
+
                 while ((line = reader.readLine()) != null) {
 
                     entireHTMLCode.add(line);
@@ -97,8 +112,6 @@ public class RecepieGetter{
 
 
                 setResultate(recipeURL);
-                System.out.println(recipeURL);
-
             }
 
             if (vegaBoolean) {
@@ -117,6 +130,8 @@ public class RecepieGetter{
                 //Wird aus Zeitgründen weggelassen.
             }
             return null;
+
+            //Omnivore fehlt noch
         });
     }
 

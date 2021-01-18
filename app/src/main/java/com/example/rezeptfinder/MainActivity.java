@@ -1,8 +1,11 @@
 /**
  * Diese App wurde von Jason Banyer programmiert.
- * Letzer Eintrag am 12.01.2021
+ * Letzer Eintrag am 18.01.2021
  *
  * Diese Klasse ist die Hauptklasse und verwaltet die erste Appseite.
+ * Die MainActivity ruft als letztes die ResultActivity auf und übergibt Ihr die entsprechenden Booleans,
+ * die angeben ob ein Filter verwendet wird.
+ *
  * */
 package com.example.rezeptfinder;
 

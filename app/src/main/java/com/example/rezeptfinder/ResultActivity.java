@@ -1,3 +1,10 @@
+/**
+ * Diese App wurde von Jason Banyer programmiert.
+ * Letzer Eintrag am 18.01.2021
+ *
+ * Diese Klasse ist die letzte Klasse. Sie ist für die Activity zuständig und das Anzeigen der Resultate.
+ * Ausserdem ruft sie den RecepieGetter als asynchrones Thread auf.
+ * */
 package com.example.rezeptfinder;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,10 +42,11 @@ public class ResultActivity extends AppCompatActivity {
 
 
 
-        //Trying the FutureTask Code
+        //Der FutureTask Code erstellt ein neuen asynchronen Thread
         Future<String> future = null;
+        RecepieGetter RG = new RecepieGetter();
         try {
-            future = new RecepieGetter().getIt(vegiBoolean, vegaBoolean, diabBoolean, laktBoolean);
+            future = RG.getIt(vegiBoolean, vegaBoolean, diabBoolean, laktBoolean);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,39 +62,23 @@ public class ResultActivity extends AppCompatActivity {
         //End of that.
 
 
+        LinearLayout LL = new LinearLayout(this); //wenn nicht content, result_layout probiere
+        setContentView(LL);
+        LL.setOrientation(LL.VERTICAL);
+
+
+        //Titel setzen
+        TextView titleView = new TextView(this);
+        titleView.setText("Kochapp");
+        titleView.setTextSize(35);
+        titleView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        titleView.setBackgroundColor(Color.rgb(177, 177, 177));
+        titleView.setTextColor(Color.rgb(255, 255, 255));
+        LL.addView(titleView);
 
 
 
-        /*
-        RecepieGetter RG = new RecepieGetter();
-        try {
-            RG.getIt(vegiBoolean, vegaBoolean, diabBoolean, laktBoolean);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
-
-            LinearLayout LL = new LinearLayout(this); //wenn nicht content, result_layout probiere
-            setContentView(LL);
-            LL.setOrientation(LL.VERTICAL);
-
-
-            //Titel setzen
-            TextView titleView = new TextView(this);
-            titleView.setText("Kochapp");
-            titleView.setTextSize(35);
-            titleView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            titleView.setBackgroundColor(Color.rgb(177, 177, 177));
-            titleView.setTextColor(Color.rgb(255, 255, 255));
-
-            LL.addView(titleView);
-
-
-
-
-
-/*
-
+            //Die Resultate werden von dem RecepieGetter geholt und ausgelesen und dementsprechend angezeigt.
         ArrayList resultate = RG.getResultate();
         for (int counter = 0; counter < resultate.size(); counter++) {
             System.out.println(resultate.get(counter));
@@ -99,7 +91,6 @@ public class ResultActivity extends AppCompatActivity {
             textView.setText((CharSequence) resultate.get(i));
             LL.addView(textView);
         }
-*/
         }
 
 }

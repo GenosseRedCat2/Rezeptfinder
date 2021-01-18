@@ -26,6 +26,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean vegaBoolean = false;
     private boolean diabBoolean = false;
     private boolean laktBoolean = false;
-
+    String hello;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -200,8 +202,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                 resultActivityIntent.putExtras(b);
+
+
                 startActivity(resultActivityIntent);
+
                 finish();
+
 
             }
 

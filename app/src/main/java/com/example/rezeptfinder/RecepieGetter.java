@@ -135,12 +135,12 @@ public class RecepieGetter{
         });
     }
 
-    // Getter
+    // Gibt das Resultat aus, welches von einer anderen Klasse aufgerufen werden kann.
     public ArrayList<String> getResultate () {
         return recipeURL;
     }
 
-    // Setter
+    // Setzt das Resultat, damit es von einer anderen Klasse abgeholt werden kann.
     public void setResultate (ArrayList recipeURL){
         this.recipeURL = recipeURL;
     }

@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // Get the application context
+        // Holt den App Kontext
         mainContext = getApplicationContext();
 
-        // Get the activity
+        // Holt die Activity
         mainActivity = MainActivity.this;
 
         // Referenziert die XML Dateien
@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
         searchButton = (Button) findViewById(R.id.button);
 
 
-        // Initializing a new list of ingredients
+        // Hier würde die Synchronisierung der Zutaten kommen.
+        // Eine Liste von Zutaten wird inizialisiert
         List<String> ingredients = Arrays.asList(
                 "Ananas",
                 "Äpfel",
@@ -203,12 +204,8 @@ public class MainActivity extends AppCompatActivity {
                 b.putBoolean("diab_bool", diabBoolean);
                 b.putBoolean("lakto", laktBoolean);
 
-
                 resultActivityIntent.putExtras(b);
-
-
                 startActivity(resultActivityIntent);
-
                 finish();
 
 
